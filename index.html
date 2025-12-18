@@ -3,40 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JhaoCubic Studio | 個人工作室</title>
+    <title>JhaoCubic Studio | 個人開發工作室</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f4f9; }
-        header { text-align: center; padding: 50px 0; background: #1a1a1a; color: #00f6ff; border-radius: 10px; margin-bottom: 30px; border: 2px solid #00B8FF; }
-        .app-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .btn { display: inline-block; padding: 10px 20px; background: #00B8FF; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px; }
-        footer { text-align: center; margin-top: 50px; font-size: 0.9em; color: #666; }
+        :root {
+            --bg-color: #0a0a0c;
+            --card-bg: #16161a;
+            --neon-blue: #00B8FF;
+            --neon-green: #00FF7F;
+            --neon-cyan: #8DF0FF;
+            --text-main: #e0e0e0;
+            --text-dim: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Noto+Sans+TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(0, 184, 255, 0.1) 0%, rgba(10, 10, 12, 1) 100%);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 20px rgba(141, 240, 255, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .studio-desc {
+            font-size: 1.2rem;
+            color: var(--neon-green);
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -50px auto 50px;
+            padding: 20px;
+        }
+
+        /* App 卡片樣式 */
+        .app-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 184, 255, 0.3);
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .app-section { grid-template-columns: 1fr; text-align: center; }
+            h1 { font-size: 2rem; }
+        }
+
+        .app-icon-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .app-icon {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #00B8FF, #00FF7F);
+            border-radius: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 80px;
+            box-shadow: 0 0 30px rgba(0, 184, 255, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(0, 255, 127, 0.1);
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        h2 { font-family: 'Orbitron', sans-serif; color: var(--neon-blue); }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid var(--neon-blue);
+        }
+
+        .feature-item h4 { margin: 0 0 5px 0; color: var(--neon-cyan); }
+        .feature-item p { margin: 0; font-size: 0.9rem; color: var(--text-dim); }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--neon-blue);
+            color: #000;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .studio-info {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Welcome to JhaoCubic Studio</h1>
-    <p>獨立開發者的創意空間</p>
+    <h1>JhaoCubic Studio</h1>
+    <p class="studio-desc">Welcome to My Creative Digital Space</p>
 </header>
 
-<section>
-    <h2>關於工作室 (About Us)</h2>
-    <p>致力於透過簡潔、直覺的數位工具，改善日常生活體驗。這裡是我所有專案的發源地。</p>
-</section>
-
-<section>
-    <h2>我的應用程式 (My Apps)</h2>
-    
-    <div class="app-card">
-        <h3>LED Marquee - 霓虹跑馬燈</h3>
-        <p>一款專業的 LED 顯示模擬工具，支援霓虹燈效果與多樣化自訂功能。</p>
-        <a href="https://jhaocubic.github.io/led-social-banner-policy/" class="btn">隱私權政策 (Privacy Policy)</a>
-    </div>
-
+<div class="container">
+    <section class="studio-info">
+        <h2>About Us</h2>
+        <p>致力於透過簡潔、直覺的數位工具，改善日常生活體驗。我們相信優秀的軟體應該像藝術品一樣，既實用又具備美感。</p>
+        <p><i>Dedicated to enhancing daily life through intuitive digital tools. We believe software should be as functional as it is aesthetic.</i></p>
     </section>
 
+    <section class="app-section">
+        <div class="app-icon-area">
+            <div class="app-icon">✨</div>
+            <div class="badge">Currently on Google Play</div>
+        </div>
+
+        <div class="app-content">
+            <h2>LED Social Banner - Pro Marquee</h2>
+            <p style="color: var(--neon-cyan); font-weight: bold;">專業霓虹跑馬燈：演唱會、聚會與應援的首選工具</p>
+            <p>Experience the most vibrant and customizable LED Marquee app. Whether you're at a concert, picking up someone at the airport, or wanting to grab attention, we turn your phone into a professional neon display.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>Neon Style</h4>
+                    <p>Hacker Green, Cyber Yellow等多款極致細膩的霓虹樣式。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>High Perf</h4>
+                    <p>正規化速度補償技術，支援 最佳狀態是30FPS 高流暢錄影模式。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Smart Sensor</h4>
+                    <p>內建感測器監聽，支援搖晃手機快速變更顏色或效果。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Privacy First</h4>
+                    <p>無須連網，所有內容僅存儲於用戶本地設備。</p>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <a href="https://jhaocubic.github.io/led-social-banner-policy/" class="btn btn-outline">Privacy Policy</a>
+                <a href="mailto:jhaocubic@gmail.com" class="btn btn-outline">Contact Developer</a>
+            </div>
+        </div>
+    </section>
+</div>
+
 <footer>
-    <p>© 2024 JhaoCubic Studio. All rights reserved.</p>
+    <p>© 2025–2026 JhaoCubic Studio. All rights reserved.</p>
+    <p>獨立開發者的創意空間 | Designed by JHaoCubic</p>
 </footer>
 
 </body>
